@@ -13,7 +13,7 @@ class RecipesProvider extends ChangeNotifier {
     notifyListeners();
     //puerto android 10.0.2.2
     //IOS 127.0.0.1
-    final url = Uri.parse('http://192.168.100.84:3001/recipes');
+    final url = Uri.parse('http://192.168.100.83:3001/recipes');
     try {
       final response = await http.get(url);
       if (response.statusCode == 200) {
@@ -36,7 +36,7 @@ class RecipesProvider extends ChangeNotifier {
     final isFavorite = favoriteRecipes.contains(recipe);
 
     try {
-      final url = Uri.parse('http://192.168.100.84:3001/favorites');
+      final url = Uri.parse('http://192.168.100.83:3001/favorites');
       final response = isFavorite ? await http.delete(url, body: json.encode({'id': recipe.id})) :
           await http.post(url, body: json.encode(recipe.toJson()));
       if (response.statusCode == 200) {
